@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  database: #ESSE É O NOME DO SERVICE QUE DEVE ESTAR NO ARQUIVO DE CRIAÇÃO DE CONEXÃO
+    image: postgres
+    container_name: database_tecesp
+    restart: always
+    ports: 
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=tecesp
+    volumes:
+      - pgdata:/data/postgres
+
+  app:
+    build: .
+    container_name: spark_tecesp
+    restart: always
+    ports: 
+      - 3200:3200
+    volumes: 
+      - .:/usr/app
+    links: 
+      - database
+    depends_on:
+      - database
+
+volumes:
+  pgdata:
+    driver: local
