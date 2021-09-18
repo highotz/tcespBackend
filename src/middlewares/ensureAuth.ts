@@ -33,6 +33,10 @@ export async function ensureAuth(
       throw new Error("Usuario não localizado");
     }
 
+    request.user = {
+      id: id_tecesp,
+    };
+
     next();
   } catch (error) {
     throw new Error("Token Invalido");
