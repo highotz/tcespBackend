@@ -7,7 +7,7 @@ import { ICityRepository } from "../../repositories/ICitysRepository";
 @injectable()
 class CreateCityUseCase {
   constructor(
-    @inject("CitysRespository")
+    @inject("CitysRepository")
     private citysRepository: ICityRepository
   ) {}
 

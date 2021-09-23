@@ -19,6 +19,9 @@ class City {
   @Column()
   site: string;
 
+  @Column()
+  cod_ibge: number;
+
   @CreateDateColumn()
   created_at: Date;
 
