@@ -1,36 +1,46 @@
-import { getRepository, Repository } from "typeorm";
+import { getRepository, Repository, createQueryBuilder } from "typeorm";
 
-import { ICityRepository } from "../../repositories/ICitysRepository";
-import { ICreateCityDTO } from "../../dtos/ICreateCityDTO";
+import {
+  ICityRepository,
+  ICreateCityDTO,
+} from "../../repositories/ICitysRepository";
 import { City } from "../../entities/City";
 
 class CitysRepository implements ICityRepository {
-  private respository: Repository<City>;
+  private repository: Repository<City>;
 
   constructor() {
-    this.respository = getRepository(City);
+    this.repository = getRepository(City);
   }
 
   async create({ name, site }: ICreateCityDTO): Promise<void> {
-    const city = this.respository.create({
+    const city = this.repository.create({
       name,
       site,
     });
 
-    await this.respository.save(city);
+    await this.repository.save(city);
   }
 
   async findByName(name: string): Promise<City> {
-    const city = await this.respository.findOne({ name });
+    const city = await this.repository.findOne({ name });
 
     return city;
   }
 
   async findById(id: string): Promise<City> {
-    const city = await this.respository.findOne(id);
+    const city = await this.repository.findOne(id);
 
     return city;
   }
+
+  // async updateUrl({ site, id }: ICreateCityDTO): Promise<void> {
+  //   const teste = await this.repository.findOne(id);
+
+  //   await this.repository.update(teste.id, {
+  //     site,
+  //   });
+  // }
 }
 
 export { CitysRepository };

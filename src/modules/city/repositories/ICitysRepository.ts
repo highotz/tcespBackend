@@ -1,12 +1,21 @@
 import { City } from "../entities/City";
-import { ICreateCityDTO } from "../dtos/ICreateCityDTO";
+// import { ICreateCityDTO } from "../dtos/ICreateCityDTO";
+
+interface ICreateCityDTO {
+  id?: string;
+  name?: string;
+  site: string;
+  cod_ibge?: number;
+}
 
 interface ICityRepository {
-  create(data: ICreateCityDTO): Promise<void>;
+  create({ name, site }: ICreateCityDTO): Promise<void>;
 
   findByName(name: string): Promise<City>;
 
   findById(id: string): Promise<City>;
+
+  // updateUrl({ id, site }: ICreateCityDTO): Promise<void>;
 }
 
-export { ICityRepository };
+export { ICityRepository, ICreateCityDTO };
