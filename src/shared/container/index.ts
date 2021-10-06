@@ -9,6 +9,9 @@ import { ICityRepository } from "../../modules/city/repositories/ICitysRepositor
 import { IAuditionsRepository } from "../../modules/auditions/repositories/IAuditionsRepository";
 import { AuditionsRepository } from "../../modules/auditions/repositories/implementations/AuditionsRepository";
 
+import { IAuditsRepository } from "../../modules/audits/repositories/IAuditsRespository";
+import { AuditsRepository } from "../../modules/audits/repositories/implementations/AuditsRepository";
+
 container.registerSingleton<IUsersRepository>(
   "UsersRepository",
   UsersRepository
@@ -22,4 +25,9 @@ container.registerSingleton<ICityRepository>(
 container.registerSingleton<IAuditionsRepository>(
   "AuditionsRepository",
   AuditionsRepository
+);
+
+container.registerSingleton<IAuditsRepository>(
+  "AuditsRepository",
+  AuditsRepository
 );
