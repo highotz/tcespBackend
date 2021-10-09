@@ -35,9 +35,9 @@ class CitysRepository implements ICityRepository {
   }
 
   async updateUrl({ site, id }: ICreateCityDTO): Promise<void> {
-    const teste = await this.findById(id);
+    const city = await this.findById(id);
 
-    await this.repository.update(teste.id, {
+    await this.repository.update(city.id, {
       site,
     });
   }

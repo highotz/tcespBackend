@@ -3,7 +3,7 @@ interface ICreateTicketDTO {
   title: string;
   description: string;
   user_id?: string;
-  city_id: string;
+  city_id?: string;
   status: string;
   due_date: Date;
 }
