@@ -10,6 +10,7 @@ class TicketsRepository implements ITicketsRepository {
   constructor() {
     this.repository = getRepository(Ticket);
   }
+
   async create({
     city_id,
     description,
@@ -30,6 +31,15 @@ class TicketsRepository implements ITicketsRepository {
     await this.repository.save(ticket);
 
     return ticket;
+  }
+
+  async listAllTickets(): Promise<Ticket[]> {
+    const tickets = await this.repository.find({
+      skip: 0,
+      take: 5,
+    });
+
+    return tickets;
   }
 }
 
