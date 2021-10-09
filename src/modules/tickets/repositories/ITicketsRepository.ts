@@ -7,7 +7,14 @@ interface ITicketsRepository {
 
   listAllTickets(query: Query): Promise<Ticket[]>;
 
-  // filterTickets(): Promise<Ticket[]>;
+  updateTicket({
+    title,
+    description,
+    due_date,
+    status,
+  }: ICreateTicketDTO): Promise<void>;
+
+  findById(id: string): Promise<Ticket>;
 }
 
 export { ITicketsRepository };

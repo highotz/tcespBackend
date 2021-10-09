@@ -2,7 +2,7 @@ import cors from "cors";
 import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";
 
-import "./database";
+import createConnection from "./database";
 
 import "./shared/container";
 
@@ -12,6 +12,7 @@ import { AppError } from "./errors/AppError";
 const app = express();
 const port = 3200;
 
+createConnection();
 app.use(cors());
 app.use(express.json());
 app.use(router);
