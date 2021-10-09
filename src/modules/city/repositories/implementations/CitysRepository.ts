@@ -34,13 +34,19 @@ class CitysRepository implements ICityRepository {
     return city;
   }
 
-  // async updateUrl({ site, id }: ICreateCityDTO): Promise<void> {
-  //   const teste = await this.repository.findOne(id);
+  async updateUrl({ site, id }: ICreateCityDTO): Promise<void> {
+    const teste = await this.findById(id);
 
-  //   await this.repository.update(teste.id, {
-  //     site,
-  //   });
-  // }
+    await this.repository.update(teste.id, {
+      site,
+    });
+  }
+
+  async listAllCity(): Promise<City[]>{ 
+    const citys = await this.repository.find();
+
+    return citys;
+  }
 }
 
 export { CitysRepository };
