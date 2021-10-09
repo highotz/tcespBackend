@@ -12,9 +12,10 @@ interface ITicketsRepository {
     description,
     due_date,
     status,
+    id
   }: ICreateTicketDTO): Promise<void>;
 
-  findById(id: string): Promise<Ticket>;
+  findById(id: number): Promise<Ticket>;
 }
 
 export { ITicketsRepository };
