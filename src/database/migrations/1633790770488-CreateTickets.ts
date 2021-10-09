@@ -1,34 +1,41 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateAudits1633474744129 implements MigrationInterface {
+export class CreateTickets1633790770488 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "audits",
+        name: "tickets",
         columns: [
           {
             name: "id",
-            type: "uuid",
+            type: "integer",
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: "increment",
           },
           {
-            name: "observation",
+            name: "title",
+            type: "varchar",
+          },
+          {
+            name: "description",
             type: "varchar",
           },
           {
             name: "user_id",
             type: "uuid",
-            isNullable: true,
           },
           {
             name: "city_id",
             type: "uuid",
-            isNullable: true,
           },
           {
-            name: "auditions_id",
-            type: "uuid",
-            isNullable: true,
+            name: "status",
+            type: "varchar",
+          },
+          {
+            name: "due_date",
+            type: "timestamp",
           },
           {
             name: "created_at",
@@ -43,13 +50,12 @@ export class CreateAudits1633474744129 implements MigrationInterface {
           {
             name: "deleted_at",
             type: "timestamp",
-            default: null,
             isNullable: true,
           },
         ],
         foreignKeys: [
           {
-            name: "FK_UserAudit",
+            name: "FKUserTicket",
             referencedTableName: "users",
             referencedColumnNames: ["id_tecesp"],
             columnNames: ["user_id"],
@@ -57,18 +63,10 @@ export class CreateAudits1633474744129 implements MigrationInterface {
             onUpdate: "SET NULL",
           },
           {
-            name: "FK_CityAudit",
+            name: "FKCityTicket",
             referencedTableName: "citys",
             referencedColumnNames: ["id"],
             columnNames: ["city_id"],
-            onDelete: "CASCADE",
-            onUpdate: "SET NULL",
-          },
-          {
-            name: "FK_AuditionsAudit",
-            referencedTableName: "auditions",
-            referencedColumnNames: ["id"],
-            columnNames: ["auditions_id"],
             onDelete: "CASCADE",
             onUpdate: "SET NULL",
           },
@@ -78,6 +76,6 @@ export class CreateAudits1633474744129 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("audits");
+    await queryRunner.dropTable("tickets");
   }
 }

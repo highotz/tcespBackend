@@ -5,12 +5,10 @@ import { IUsersRepository } from "../../modules/accounts/repositories/IUsersRepo
 
 import { CitysRepository } from "../../modules/city/repositories/implementations/CitysRepository";
 import { ICityRepository } from "../../modules/city/repositories/ICitysRepository";
+import { ITicketsRepository } from "../../modules/tickets/repositories/ITicketsRepository";
+import { TicketsRepository } from "../../modules/tickets/repositories/implementations/TicketsRepository";
 
-import { IAuditionsRepository } from "../../modules/auditions/repositories/IAuditionsRepository";
-import { AuditionsRepository } from "../../modules/auditions/repositories/implementations/AuditionsRepository";
 
-import { IAuditsRepository } from "../../modules/audits/repositories/IAuditsRespository";
-import { AuditsRepository } from "../../modules/audits/repositories/implementations/AuditsRepository";
 
 container.registerSingleton<IUsersRepository>(
   "UsersRepository",
@@ -22,12 +20,7 @@ container.registerSingleton<ICityRepository>(
   CitysRepository
 );
 
-container.registerSingleton<IAuditionsRepository>(
-  "AuditionsRepository",
-  AuditionsRepository
-);
-
-container.registerSingleton<IAuditsRepository>(
-  "AuditsRepository",
-  AuditsRepository
+container.registerSingleton<ITicketsRepository>(
+  "TicketsRepository",
+  TicketsRepository
 );
