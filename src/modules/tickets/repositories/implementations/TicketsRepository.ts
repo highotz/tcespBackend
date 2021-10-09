@@ -41,6 +41,21 @@ class TicketsRepository implements ITicketsRepository {
 
     return tickets;
   }
+
+  async findById(id: string): Promise<Ticket> {
+    const ticket = await this.repository.findOne(id);
+
+    return ticket;
+  }
+
+  updateTicket({
+    title,
+    description,
+    due_date,
+    status,
+  }: ICreateTicketDTO): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
 }
 
 export { TicketsRepository };
