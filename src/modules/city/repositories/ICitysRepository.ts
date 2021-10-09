@@ -15,7 +15,9 @@ interface ICityRepository {
 
   findById(id: string): Promise<City>;
 
-  // updateUrl({ id, site }: ICreateCityDTO): Promise<void>;
+  updateUrl({ id, site }: ICreateCityDTO): Promise<void>;
+
+  listAllCity(): Promise<City[]>;
 }
 
 export { ICityRepository, ICreateCityDTO };

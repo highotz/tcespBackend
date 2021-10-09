@@ -9,12 +9,12 @@ class UpdateCityUrlController {
 
     const updateCityUrlUseCase = container.resolve(UpdateCityUrlUseCase);
 
-    await updateCityUrlUseCase.execute({
+    const newUrl = await updateCityUrlUseCase.execute({
       id,
       site,
     });
 
-    return response.status(201).send();
+    return response.status(201).json(newUrl);
   }
 }
 

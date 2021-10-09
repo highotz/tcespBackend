@@ -1,9 +1,9 @@
 import { inject, injectable } from "tsyringe";
+
 import { AppError } from "../../../../errors/AppError";
 import { ICreateCityDTO } from "../../dtos/ICreateCityDTO";
 
 import { ICityRepository } from "../../repositories/ICitysRepository";
-
 @injectable()
 class CreateCityUseCase {
   constructor(

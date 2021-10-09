@@ -3,9 +3,7 @@ import { getRepository, Repository } from "typeorm";
 
 import { City } from "../../entities/City";
 import { AppError } from "../../../../errors/AppError";
-import {
-  ICityRepository,
-} from "../../repositories/ICitysRepository";
+import { ICityRepository } from "../../repositories/ICitysRepository";
 
 interface IRequest {
   id: string;
@@ -14,20 +12,22 @@ interface IRequest {
 
 @injectable()
 class UpdateCityUrlUseCase {
-  private teste: Repository<City>;
   constructor(
     @inject("CitysRepository")
     private citysRepository: ICityRepository
-  ) {
-    this.teste = getRepository(City);
-  }
+  ) {}
 
   async execute({ id, site }: IRequest): Promise<void> {
-    const city = await this.citysRepository.findById(id);
+    const cityExists = await this.citysRepository.findById(id);
 
-    site = city.site = site;
+    if (!cityExists) {
+      throw new AppError("City not found");
+    }
 
-    await this.teste.update(city.id, { site });
+    await this.citysRepository.updateUrl({
+      id,
+      site,
+    });
   }
 }
 
