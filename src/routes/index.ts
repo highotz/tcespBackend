@@ -9,7 +9,7 @@ const router = Router();
 
 router.use("/users", usersRoutes);
 router.use("/citys", citysRoutes);
-router.use('/tickets', ticketsRoutes)
+router.use("/tickets", ticketsRoutes);
 router.use(authRoutes);
 
 export { router };

@@ -2,26 +2,22 @@ import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
-  Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { v4 as uuid } from "uuid";
 
 import { User } from "../../accounts/entities/User";
-import { City } from "../../city/entities/City";
+import { Ticket } from "./Ticket";
 
-@Entity("tickets")
-class Ticket {
-  @PrimaryGeneratedColumn("increment")
-  id: number;
-
-  @Column()
-  title: string;
+class Comment {
+  @PrimaryColumn()
+  id: string;
 
   @Column()
-  description: string;
+  comment: string;
 
   @Column()
   user_id: string;
@@ -31,17 +27,11 @@ class Ticket {
   userId: User;
 
   @Column()
-  city_id: string;
+  ticket_id: number;
 
-  @JoinColumn({ name: "city_id" })
-  @ManyToOne(() => City)
-  cityId: City;
-
-  @Column()
-  status: string;
-
-  @Column()
-  due_date: Date;
+  @JoinColumn({ name: "ticket_id" })
+  @ManyToOne(() => Ticket)
+  ticketId: Ticket;
 
   @CreateDateColumn()
   created_at: Date;
@@ -51,6 +41,12 @@ class Ticket {
 
   @DeleteDateColumn()
   deleted_at: Date;
+
+  constructor() {
+    if (!this.id) {
+      this.id = uuid();
+    }
+  }
 }
 
-export { Ticket };
+export { Comment };

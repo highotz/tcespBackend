@@ -39,6 +39,7 @@ export async function ensureAuth(
 
     next();
   } catch (error) {
+    console.log(error);
     throw new Error("Token Invalido");
   }
 }

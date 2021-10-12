@@ -11,9 +11,12 @@ const createCityController = new CreateCityController();
 const updateCityUrlController = new UpdateCityUrlController();
 const listCityController = new ListCityController();
 
-citysRoutes.use(ensureAuth);
-citysRoutes.post("/", createCityController.handle);
-citysRoutes.patch("/update-url/:id", updateCityUrlController.handle);
-citysRoutes.get("/", listCityController.handle);
+citysRoutes.post("/", ensureAuth, createCityController.handle);
+citysRoutes.patch(
+  "/update-url/:id",
+  ensureAuth,
+  updateCityUrlController.handle
+);
+citysRoutes.get("/", ensureAuth, listCityController.handle);
 
 export { citysRoutes };
