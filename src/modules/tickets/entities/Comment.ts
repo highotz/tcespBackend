@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
+  Entity,
   JoinColumn,
   ManyToOne,
   PrimaryColumn,
@@ -12,6 +13,7 @@ import { v4 as uuid } from "uuid";
 import { User } from "../../accounts/entities/User";
 import { Ticket } from "./Ticket";
 
+@Entity('comments')
 class Comment {
   @PrimaryColumn()
   id: string;

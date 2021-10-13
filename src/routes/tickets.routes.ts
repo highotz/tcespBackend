@@ -22,7 +22,7 @@ ticketsRoutes.get("/", ensureAuth, listAllTicketsController.handle);
 ticketsRoutes.put("/update-ticket", ensureAuth, updateTicketController.handle);
 
 ticketsRoutes.post(
-  "/create-comments",
+  "/create-comments/:id",
   ensureAuth,
   createCommentController.handle
 );

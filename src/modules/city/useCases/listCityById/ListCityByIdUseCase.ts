@@ -11,10 +11,10 @@ class ListCityByIdUseCase {
     private cityRepository: ICityRepository
   ) {}
 
-  async execute(id: string): Promise<City>{
+  async execute(id: string): Promise<City> {
     const city = await this.cityRepository.findById(id);
 
-    if(!city){
+    if (!city) {
       throw new AppError(`No City found`);
     }
 

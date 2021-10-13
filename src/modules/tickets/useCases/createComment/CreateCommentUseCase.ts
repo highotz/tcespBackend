@@ -1,18 +1,21 @@
 import { inject, injectable } from "tsyringe";
-import { ICreateCommentDTO } from "../../dtos/ICreateCommentDTO";
 
 import { Comment } from "../../entities/Comment";
 import { CommentRepository } from "../../repositories/implementations/CommentRepository";
 
+interface IResponse {
+  teste: string;
+  id: string;
+}
 @injectable()
 class CreateCommentUseCase {
   constructor(
-    @inject("CommentsRepository")
+    @inject("CommentRepository")
     private commentsRepository: CommentRepository
   ) {}
 
-  async execute({ comment }: ICreateCommentDTO): Promise<Comment> {
-    const ticketComment = await this.commentsRepository.create({ comment });
+  async execute(comment: string, { teste }: IResponse): Promise<Comment> {
+    const ticketComment = await this.commentsRepository.create(comment);
 
     return ticketComment;
   }

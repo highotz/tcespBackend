@@ -42,7 +42,7 @@ class CitysRepository implements ICityRepository {
     });
   }
 
-  async listAllCity(): Promise<City[]>{ 
+  async listAllCity(): Promise<City[]> {
     const citys = await this.repository.find();
 
     return citys;

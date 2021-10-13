@@ -5,12 +5,20 @@ import { CreateCommentUseCase } from "./CreateCommentUseCase";
 
 class CreateCommentController {
   async handle(request: Request, response: Response): Promise<Response> {
+    const { id } = request.user;
+    const { teste } = request.params;
+    const { comment } = request.body;
+
     const createCommentUseCase = container.resolve(CreateCommentUseCase);
-    const { ticketComment } = request.body;
 
-    const comment = await createCommentUseCase.execute(ticketComment);
+    console.log(id, teste);
 
-    return response.json(comment);
+    const newComment = await createCommentUseCase.execute(comment, {
+      teste,
+      id,
+    });
+
+    return response.json(newComment);
   }
 }
 

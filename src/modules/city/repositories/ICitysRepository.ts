@@ -1,5 +1,4 @@
 import { City } from "../entities/City";
-// import { ICreateCityDTO } from "../dtos/ICreateCityDTO";
 
 interface ICreateCityDTO {
   id?: string;

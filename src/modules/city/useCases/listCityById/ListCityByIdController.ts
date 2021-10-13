@@ -8,7 +8,7 @@ class ListCityByIdController {
 
     const listCityByIdUseCase = container.resolve(ListCityByIdUseCase);
 
-    const city = listCityByIdUseCase.execute(city_id);
+    const city = await listCityByIdUseCase.execute(city_id);
 
     return response.json(city);
   }
