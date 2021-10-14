@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateComments1633824173892 implements MigrationInterface {
+export class CreateItens1634181081667 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "comments",
+        name: "itens",
         columns: [
           {
             name: "id",
@@ -12,12 +12,12 @@ export class CreateComments1633824173892 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: "comment",
+            name: "title",
             type: "varchar",
           },
           {
-            name: "user_id",
-            type: "uuid",
+            name: "description",
+            type: "varchar",
           },
           {
             name: "ticket_id",
@@ -41,14 +41,6 @@ export class CreateComments1633824173892 implements MigrationInterface {
         ],
         foreignKeys: [
           {
-            name: "FKUserComment",
-            referencedTableName: "users",
-            referencedColumnNames: ["id_tecesp"],
-            columnNames: ["user_id"],
-            onDelete: "CASCADE",
-            onUpdate: "SET NULL",
-          },
-          {
             name: "FKTicketComment",
             referencedTableName: "tickets",
             referencedColumnNames: ["id"],
@@ -62,6 +54,6 @@ export class CreateComments1633824173892 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("comments");
+    await queryRunner.dropTable("itens");
   }
 }

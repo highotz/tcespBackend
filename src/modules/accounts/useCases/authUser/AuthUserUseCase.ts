@@ -15,6 +15,7 @@ interface IResponse {
     email: string;
     name: string;
     admin: boolean;
+    id_tecesp: string;
   };
   token: string;
 }
@@ -50,6 +51,7 @@ class AuthUserUseCase {
         name: user.name,
         email: user.email,
         admin: user.admin,
+        id_tecesp: user.id_tecesp
       },
     };
 

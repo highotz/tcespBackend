@@ -8,9 +8,9 @@ export async function createCity() {
 
   await connection.query(
     `INSERT INTO CITYS(id, name, site, created_at, updated_at, deleted_at) 
-    VALUES('${id}', 'São Paulo', 'sp.com.br', 'now()', 'now()', null);
+    VALUES('${id}', 'São José dos Campos', 'https://servicos2.sjc.sp.gov.br/servicos/portal_da_transparencia.aspx', 'now()', 'now()', null);
     INSERT INTO CITYS(id, name, site, created_at, updated_at, deleted_at) 
-    VALUES('${id2}', 'Osasco', 'oz.com.br', 'now()', 'now()', null);
+    VALUES('${id2}', 'Campos do Jordão', 'http://camposdojordao.sp.gov.br/transparencia/', 'now()', 'now()', null);
     `
   );
 

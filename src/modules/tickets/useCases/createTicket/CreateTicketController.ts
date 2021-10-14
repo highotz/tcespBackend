@@ -5,9 +5,10 @@ import { CreateTicketUseCase } from "./CreateTicketUseCase";
 
 class CreateTicketController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { user_id } = request.params;
+    const user_id = request.headers.userid;
     const { city_id, description, status, due_date, title } = request.body;
 
+    console.log(request.headers);
     const createTicketUseCase = container.resolve(CreateTicketUseCase);
 
     const ticket = await createTicketUseCase.execute({
