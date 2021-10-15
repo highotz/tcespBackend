@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
-    "seed": "ts-node-dev src/seeds/index.ts"
+    "seed": "ts-node-dev src/seeds/index.ts",
+    "mg:dev": "ts-node-dev ./node_modules/typeorm/cli migration:run",
+    "mg:dev:revert": "ts-node-dev ./node_modules/typeorm/cli migration:reverte",
+    "dc:up": "docker-compose up -d"
   },
   "dependencies": {
     "@types/cors": "^2.8.12",
