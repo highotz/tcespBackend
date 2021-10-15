@@ -9,7 +9,7 @@ class ListUserByEmailUseCase {
     private usersRepository: UsersRepository
   ){}
   async execute(email: string): Promise<User>{
-    const user = await this.usersRepository.findByEmail(email);
+    const user = await this.usersRepository.listUserByEmail(email);
 
     return user;
   }

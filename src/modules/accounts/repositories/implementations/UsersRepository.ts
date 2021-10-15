@@ -10,6 +10,15 @@ class UsersRepository implements IUsersRepository {
     this.repository = getRepository(User);
   }
 
+  async listUserByEmail(email: string): Promise<User> {
+    const user = await this.repository.findOne({
+      where: { email: email },
+      select: ["id_tecesp", "email", "name", "admin"],
+    });
+
+    return user;
+  }
+
   async create({ email, name, password }: ICreateUserDTO): Promise<void> {
     const user = this.repository.create({
       email,
@@ -21,10 +30,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   async findByEmail(email: string): Promise<User> {
-    const user = await this.repository.findOne({
-      where: { email: email },
-      select: ["id_tecesp", "email", "name", "admin"],
-    });
+    const user = await this.repository.findOne({ email });
 
     return user;
   }
@@ -41,6 +47,10 @@ class UsersRepository implements IUsersRepository {
     });
 
     return user;
+  }
+
+  async updateUser(email: string, password: string): Promise<User> {
+    throw new Error("Method not implemented.");
   }
 }
 

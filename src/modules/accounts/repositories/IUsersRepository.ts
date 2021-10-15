@@ -9,6 +9,10 @@ interface IUsersRepository {
   findById(id: string): Promise<User>;
 
   listAllUsers(): Promise<User[]>;
+
+  listUserByEmail(email: string): Promise<User>;
+
+  updateUser(email: string, password: string): Promise<User>;
 }
 
 export { IUsersRepository };

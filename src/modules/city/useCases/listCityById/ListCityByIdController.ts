@@ -6,7 +6,6 @@ class ListCityByIdController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
-    console.log(id);
     const listCityByIdUseCase = container.resolve(ListCityByIdUseCase);
 
     const city = await listCityByIdUseCase.execute(id);

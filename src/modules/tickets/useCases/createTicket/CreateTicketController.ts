@@ -8,7 +8,6 @@ class CreateTicketController {
     const user_id = request.headers.userid;
     const { city_id, description, status, due_date, title } = request.body;
 
-    console.log(request.headers);
     const createTicketUseCase = container.resolve(CreateTicketUseCase);
 
     const ticket = await createTicketUseCase.execute({

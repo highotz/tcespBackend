@@ -51,7 +51,7 @@ class AuthUserUseCase {
         name: user.name,
         email: user.email,
         admin: user.admin,
-        id_tecesp: user.id_tecesp
+        id_tecesp: user.id_tecesp,
       },
     };
 
