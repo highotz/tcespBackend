@@ -9,6 +9,9 @@ import { ICityRepository } from "../../modules/city/repositories/ICitysRepositor
 import { ITicketsRepository } from "../../modules/tickets/repositories/ITicketsRepository";
 import { TicketsRepository } from "../../modules/tickets/repositories/implementations/TicketsRepository";
 
+import { ItemsRepository } from "../../modules/tickets/repositories/implementations/ItemsRepository";
+import { IItemsRepository } from "../../modules/tickets/repositories/IItemsRepository";
+
 container.registerSingleton<IUsersRepository>(
   "UsersRepository",
   UsersRepository
@@ -22,4 +25,9 @@ container.registerSingleton<ICityRepository>(
 container.registerSingleton<ITicketsRepository>(
   "TicketsRepository",
   TicketsRepository
+);
+
+container.registerSingleton<IItemsRepository>(
+  "ItemsRepository",
+  ItemsRepository
 );
