@@ -8,7 +8,7 @@ class ListUserByEmailUseCase {
     @inject("UsersRepository")
     private usersRepository: UsersRepository
   ){}
-  async execute(email: string): Promise<User[]>{
+  async execute(email: string): Promise<User>{
     const user = await this.usersRepository.findByEmail(email);
 
     return user;
