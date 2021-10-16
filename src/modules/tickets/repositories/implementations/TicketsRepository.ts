@@ -98,6 +98,21 @@ class TicketsRepository implements ITicketsRepository {
 
     return tickets;
   }
+
+  async listCitysWithMostSolvedTicketsRates(city_id: string): Promise<Ticket[]> {
+    const tickets = await this.repository.find({
+      select: ["status", "title"],
+      relations: ["cityId"],
+      where: [
+        {
+          status: "done",
+          city_id: city_id,
+        },
+      ],
+    });
+
+    return tickets;
+  }
 }
 
 export { TicketsRepository };

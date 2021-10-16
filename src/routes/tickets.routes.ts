@@ -6,6 +6,7 @@ import { CreateItemController } from "../modules/tickets/useCases/createItem/Cre
 import { CreateTicketController } from "../modules/tickets/useCases/createTicket/CreateTicketController";
 import { ListAllTicketsController } from "../modules/tickets/useCases/listAllTickets/ListAllTicketsController";
 import { ListAllTicketsAndAllItemsController } from "../modules/tickets/useCases/listAllTicketsAndAllItems/ListAllTicketsAndAllItemsController";
+import { ListCitysWithMostSolvedTicketsRatesController } from "../modules/tickets/useCases/listCitysWithMostSolvedTicketsRates/ListCitysWithMostSolvedTicketsRatesController";
 import { ListCityWithMostTickRateController } from "../modules/tickets/useCases/listCityWithMostTicketRate/ListCityWithMostTickRateController";
 import { ListItemController } from "../modules/tickets/useCases/listItemByTicketId/ListItemController";
 import { UpdateItemController } from "../modules/tickets/useCases/updateItem/UpdateItemController";
@@ -22,6 +23,8 @@ const listCityWithMostTickRateController =
   new ListCityWithMostTickRateController();
 const updateItemController = new UpdateItemController();
 const listAllTicketAndAllItems = new ListAllTicketsAndAllItemsController();
+const listCitysWithMostSolvedTicketsRatesController =
+  new ListCitysWithMostSolvedTicketsRatesController();
 
 ticketsRoutes.post("/new-ticket", ensureAuth, createTicketController.handle);
 
@@ -53,6 +56,12 @@ ticketsRoutes.get(
   "/all-tickets-all-items",
   ensureAuth,
   listAllTicketAndAllItems.handle
+);
+
+ticketsRoutes.get(
+  "/report-tickets-solved/:city_id",
+  ensureAuth,
+  listCitysWithMostSolvedTicketsRatesController.handle
 );
 
 export { ticketsRoutes };

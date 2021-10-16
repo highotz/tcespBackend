@@ -14,6 +14,8 @@ interface ITicketsRepository {
   listCityWithMostTicketRate(city_id: string): Promise<Ticket[]>;
 
   listAllTicketsAndAllItems(): Promise<Ticket[]>;
+
+  listCitysWithMostSolvedTicketsRates(city_id: string): Promise<Ticket[]>;
 }
 
 export { ITicketsRepository };
