@@ -18,11 +18,12 @@ class TicketsRepository implements ITicketsRepository {
     due_date,
     title,
     user_id,
+    status
   }: ICreateTicketDTO): Promise<Ticket> {
     const ticket = this.repository.create({
       city_id,
       description,
-      status: "pending",
+      status,
       due_date,
       title,
       user_id,

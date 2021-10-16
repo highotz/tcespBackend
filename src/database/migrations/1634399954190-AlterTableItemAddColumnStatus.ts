@@ -9,7 +9,6 @@ export class AlterTableItemAddColumnStatus1634399954190
       new TableColumn({
         name: "status",
         type: "varchar",
-        default: "'pending'",
         isNullable: true,
       })
     );
