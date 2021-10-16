@@ -12,7 +12,7 @@ interface IUsersRepository {
 
   listUserByEmail(email: string): Promise<User>;
 
-  updateUser(email: string, password: string): Promise<User>;
+  updateUser(data: ICreateUserDTO): Promise<void>;
 }
 
 export { IUsersRepository };

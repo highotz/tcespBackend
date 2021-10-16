@@ -49,8 +49,19 @@ class UsersRepository implements IUsersRepository {
     return user;
   }
 
-  async updateUser(email: string, password: string): Promise<User> {
-    throw new Error("Method not implemented.");
+  async updateUser({
+    email,
+    password,
+    admin,
+    id,
+  }: ICreateUserDTO): Promise<void> {
+    const user = await this.findById(id);
+
+    await this.repository.update(user.id_tecesp, {
+      email,
+      password,
+      admin,
+    });
   }
 }
 
