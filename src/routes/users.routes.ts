@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { ensureAdmin } from "../middlewares/ensureAdmin";
 
 import { ensureAuth } from "../middlewares/ensureAuth";
 import { CreateUserController } from "../modules/accounts/useCases/createUser/CreateUserController";
@@ -13,9 +14,9 @@ const listUserByEmailController = new ListUserByEmailController();
 const listAllUsersController = new ListAllUsersController();
 const updateUserController = new UpdateUserController();
 
-usersRoutes.post("/", ensureAuth, createUserController.handle);
+usersRoutes.post("/", ensureAuth, ensureAdmin, createUserController.handle);
 usersRoutes.get("/", ensureAuth, listUserByEmailController.handle);
 usersRoutes.get("/all-users", ensureAuth, listAllUsersController.handle);
-usersRoutes.put("/update/:id", ensureAuth, updateUserController.handle);
+usersRoutes.put("/update/:id", ensureAuth, ensureAdmin, updateUserController.handle);
 
 export { usersRoutes };

@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { ensureAdmin } from "../middlewares/ensureAdmin";
 
 import { ensureAuth } from "../middlewares/ensureAuth";
 import { CreateCityController } from "../modules/city/useCases/createCity/CreateCityController";
@@ -14,10 +15,11 @@ const listCityController = new ListCityController();
 const listCityByIdController = new ListCityByIdController();
 
 citysRoutes.get("/:id", ensureAuth, listCityByIdController.handle);
-citysRoutes.post("/", ensureAuth, createCityController.handle);
+citysRoutes.post("/", ensureAuth, ensureAdmin, createCityController.handle);
 citysRoutes.patch(
   "/update-url/:id",
   ensureAuth,
+  ensureAdmin,
   updateCityUrlController.handle
 );
 citysRoutes.get("/", ensureAuth, listCityController.handle);
