@@ -1,5 +1,5 @@
 interface ICreateTicketDTO {
-  id?: number;
+  id?: string;
   title: string;
   description: string;
   user_id?: any;

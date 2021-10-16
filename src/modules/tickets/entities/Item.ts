@@ -20,6 +20,9 @@ class Item {
   @ManyToOne(() => Ticket)
   ticketId: Ticket;
 
+  @Column()
+  status: string;
+
   @CreateDateColumn()
   created_at: Date;
 

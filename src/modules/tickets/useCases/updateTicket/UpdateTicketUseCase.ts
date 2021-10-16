@@ -4,10 +4,9 @@ import { AppError } from "../../../../errors/AppError";
 import { ICreateTicketDTO } from "../../dtos/ICreateTicketDTO";
 import { ITicketsRepository } from "../../repositories/ITicketsRepository";
 
-interface IRequest{
-  title: string,
-  description: string,
-
+interface IRequest {
+  title: string;
+  description: string;
 }
 
 @injectable()

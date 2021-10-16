@@ -41,7 +41,7 @@ class TicketsRepository implements ITicketsRepository {
     return tickets;
   }
 
-  async findById(id: number): Promise<Ticket> {
+  async findById(id: string): Promise<Ticket> {
     const ticket = await this.repository.findOne(id);
 
     return ticket;

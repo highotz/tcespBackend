@@ -15,7 +15,7 @@ import { City } from "../../city/entities/City";
 @Entity("tickets")
 class Ticket {
   @PrimaryGeneratedColumn("increment")
-  id: number;
+  id: string;
 
   @Column()
   title: string;

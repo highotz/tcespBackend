@@ -8,7 +8,8 @@
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
     "seed": "ts-node-dev src/seeds/index.ts",
     "mg:dev": "ts-node-dev ./node_modules/typeorm/cli migration:run",
-    "mg:dev:revert": "ts-node-dev ./node_modules/typeorm/cli migration:reverte",
+    "mg:dev:revert": "ts-node-dev ./node_modules/typeorm/cli migration:revert",
+    "mg:create": "ts-node-dev ./node_modules/typeorm/cli migration:create",
     "dc:up": "docker-compose up -d",
     "dc:stop": "docker-compose stop"
   },

@@ -7,15 +7,9 @@ interface ITicketsRepository {
 
   listAllTickets(query: Query): Promise<Ticket[]>;
 
-  updateTicket({
-    title,
-    description,
-    due_date,
-    status,
-    id,
-  }: ICreateTicketDTO): Promise<void>;
+  updateTicket(data: ICreateTicketDTO): Promise<void>;
 
-  findById(id: number): Promise<Ticket>;
+  findById(id: string): Promise<Ticket>;
 
   listCityWithMostTicketRate(city_id: string): Promise<Ticket[]>;
 }

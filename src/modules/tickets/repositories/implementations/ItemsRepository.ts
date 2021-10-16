@@ -20,6 +20,7 @@ class ItemsRepository implements IItemsRepository {
       description,
       title,
       ticket_id,
+      status: "pending",
     });
 
     await this.itemRepository.save(item);
@@ -29,11 +30,32 @@ class ItemsRepository implements IItemsRepository {
 
   async findItemByTicketId(ticket_id: any): Promise<Item[]> {
     const items = await this.itemRepository.find({
-      select: ["title", "description"],
+      select: ["title", "description", "status", "id"],
       where: { ticket_id: ticket_id },
     });
 
     return items;
+  }
+
+  async findById(id: string): Promise<Item>{
+    const ticket = await this.itemRepository.findOne(id);
+
+    return ticket;
+  }
+
+  async updateItem({
+    description,
+    title,
+    status,
+    id,
+  }: ICreateItemsDTO): Promise<void> {
+    const item = await this.findById(id);
+
+    await this.itemRepository.update(item.id, {
+      title,
+      status,
+      description,
+    });
   }
 }
 
