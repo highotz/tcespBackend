@@ -22,7 +22,7 @@ class TicketsRepository implements ITicketsRepository {
     const ticket = this.repository.create({
       city_id,
       description,
-      status: 'pending',
+      status: "pending",
       due_date,
       title,
       user_id,
@@ -62,6 +62,21 @@ class TicketsRepository implements ITicketsRepository {
       due_date,
       status,
     });
+  }
+
+  async listCityWithMostTicketRate(city_id: string): Promise<Ticket[]> {
+    const tickets = await this.repository.find({
+      select: ["status", "title"],
+      relations: ["cityId"],
+      where: [
+        {
+          status: "pending",
+          city_id: city_id,
+        },
+      ],
+    });
+
+    return tickets;
   }
 }
 

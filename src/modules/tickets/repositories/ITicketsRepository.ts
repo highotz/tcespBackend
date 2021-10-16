@@ -12,10 +12,12 @@ interface ITicketsRepository {
     description,
     due_date,
     status,
-    id
+    id,
   }: ICreateTicketDTO): Promise<void>;
 
   findById(id: number): Promise<Ticket>;
+
+  listCityWithMostTicketRate(city_id: string): Promise<Ticket[]>;
 }
 
 export { ITicketsRepository };

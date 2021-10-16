@@ -9,7 +9,8 @@
     "seed": "ts-node-dev src/seeds/index.ts",
     "mg:dev": "ts-node-dev ./node_modules/typeorm/cli migration:run",
     "mg:dev:revert": "ts-node-dev ./node_modules/typeorm/cli migration:reverte",
-    "dc:up": "docker-compose up -d"
+    "dc:up": "docker-compose up -d",
+    "dc:stop": "docker-compose stop"
   },
   "dependencies": {
     "@types/cors": "^2.8.12",
