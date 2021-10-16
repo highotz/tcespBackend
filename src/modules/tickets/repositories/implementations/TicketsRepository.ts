@@ -78,6 +78,26 @@ class TicketsRepository implements ITicketsRepository {
 
     return tickets;
   }
+
+  async listAllTicketsAndAllItems(): Promise<Ticket[]> {
+    const tickets = await this.repository.query(`
+      select
+      t.id as ticket_id,
+      i.itens_list,
+      u.name as user_name,
+      cy.name as city_name
+      from tickets t 
+      left join users u on t.user_id = u.id_tecesp
+      left join citys cy on t.city_id = cy.id
+      left join 
+      (select ticket_id, 
+      array_agg( title|| ',' || description) as itens_list
+      from itens
+      group by ticket_id) i on t.id = i.ticket_id
+    `);
+
+    return tickets;
+  }
 }
 
 export { TicketsRepository };

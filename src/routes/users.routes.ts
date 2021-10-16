@@ -16,6 +16,6 @@ const updateUserController = new UpdateUserController();
 usersRoutes.post("/", ensureAuth, createUserController.handle);
 usersRoutes.get("/", ensureAuth, listUserByEmailController.handle);
 usersRoutes.get("/all-users", ensureAuth, listAllUsersController.handle);
-usersRoutes.put("/update", ensureAuth, updateUserController.handle);
+usersRoutes.put("/update/:id", ensureAuth, updateUserController.handle);
 
 export { usersRoutes };
