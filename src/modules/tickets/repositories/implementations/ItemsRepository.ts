@@ -15,12 +15,13 @@ class ItemsRepository implements IItemsRepository {
     description,
     title,
     ticket_id,
+    status,
   }: ICreateItemsDTO): Promise<Item> {
     const item = this.itemRepository.create({
       description,
       title,
       ticket_id,
-      status: "pending",
+      status,
     });
 
     await this.itemRepository.save(item);
@@ -37,7 +38,7 @@ class ItemsRepository implements IItemsRepository {
     return items;
   }
 
-  async findById(id: string): Promise<Item>{
+  async findById(id: string): Promise<Item> {
     const ticket = await this.itemRepository.findOne(id);
 
     return ticket;

@@ -13,11 +13,13 @@ class CreateItemUseCase {
     description,
     title,
     ticket_id,
+    status
   }: ICreateItemsDTO): Promise<Item> {
     const item = await this.itemsRepository.create({
       description,
       title,
       ticket_id,
+      status
     });
 
     return item;

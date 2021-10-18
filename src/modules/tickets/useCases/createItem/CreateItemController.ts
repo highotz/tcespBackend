@@ -6,7 +6,7 @@ import { CreateItemUseCase } from "./CreateItemUseCase";
 class CreateItemController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { ticket_id } = request.params;
-    const { title, description } = request.body;
+    const { title, description, status } = request.body;
 
     const createItemUseCase = container.resolve(CreateItemUseCase);
 
@@ -14,6 +14,7 @@ class CreateItemController {
       ticket_id,
       title,
       description,
+      status,
     });
 
     return response.status(201).json(item);
