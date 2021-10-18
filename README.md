@@ -10,6 +10,12 @@ Grupo:
   - Higor Hotz Vasconcelos RM: 82031
 ```
 
+## Link para a documentação: :book:
+
+[Documentation](https://sour-chili-720.notion.site/API-Modelagem-49b5741d0c7f4fafb8b077b44917d78e)
+
+----
+
 ## Como rodar o projeto  :rocket:
 
 É recomendado o uso do Docker neste projeto, ja que o seu banco de dados e a aplicação estão em containers.
