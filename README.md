@@ -41,3 +41,6 @@ Agora você pode rodar o comando para adicionar as seeds ao banco de dados, bast
 ### 5 Passo -
 
 Após finalizar esses passos, você já pode testar a API juntamente com o [Front-End](https://github.com/highotz/tcespFront).
+
+
+PS: _Este projeto esta rodando apenas localmente, não conseguimos fazer o deploy para o back-end_
